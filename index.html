@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Agentic AI - Eduction</title>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/unicons.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="css/tooplate-style.css">
+    
+	
+	<script>
+        
+
+
+  async function callAPI(base) {
+    // Input validation
+	//https://5ewry84nu8.execute-api.us-east-1.amazonaws.com/Dev
+    
+    try {
+	//alert("pls wait starting" + base);
+    document.getElementById("output").innerHTML = "Please wait searching....";
+
+      const response = await fetch("https://5ewry84nu8.execute-api.us-east-1.amazonaws.com/Dev", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "prompt":base}),
+        redirect: "follow"
+      });
+
+      if (!response.ok) {
+	alert("error");
+        throw new Error(`HTTP error! Status: ${response.status}`);
+
+      }
+	else
+{
+      //alert("all ok");
+
+	const result = await response.text();
+	const parsed = JSON.parse(result);
+	
+      // Ensure 'body' is parsed if it's a stringified JSON inside body
+      //var output = typeof result.body === "string" ? JSON.parse(result.body) : result.body;
+	//const output = JSON.parse(result).body);
+	const msg = parsed.body;
+     // alert("msg" + msg);
+      document.getElementById("output").innerHTML = msg;
+	
+}
+    } catch (error) {
+     // console.error("API call failed:", error);
+      alert("error" + error);
+    }
+  }
+
+    </script>
+	
+
+  </head>
+  <body>
+
+    <!-- MENU -->
+    <nav class="navbar navbar-expand-sm navbar-light">
+        <div class="container">
+            
+           <a class="navbar-brand" href="index.html"><i class='uil uil-user'></i>Study powered by Agentic AI and RAG</a>
+		   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+			
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link"><span data-hover="Home">Home</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#architecture" class="nav-link"><span data-hover="Architecture">Architecture</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#questions" class="nav-link"><span data-hover="Sample Questions">Sample Questions</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link"><span data-hover="Contact">Contact</span></a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-lg-auto">
+                    <div class="ml-lg-4">
+                      <div class="color-mode d-lg-flex justify-content-center align-items-center">
+                        <!--<i class="color-mode-icon"></i>
+                        Color mode -->
+                      </div>
+                    </div>
+                </ul>
+				
+				
+				
+            </div>
+        
+		
+		
+		</div>
+    </nav>
+
+    <!-- ABOUT -->
+    <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about">
+        <div class="container">
+            <div class="row"> 
+			<P>              <div id="output" class="timeline-info" style="width: 700px; height: 250px;"></div> </P>
+				 <div class="col-lg-5 col-md-12 col-12">
+				 
+					<div class="timeline-info">
+					<img src="images/undraw/undraw_software_engineer_lvl5.svg" class="img-fluid" style="height: 150px; align: center"  alt="svg image">
+						<h3><span>Sample Questions</small></h3>
+						<p>What is electron?<BR>
+						What is selfpollination in flower?<BR>
+						What are components of nerve?</p>
+                    </div>
+                  
+                </div>
+                <div class="col-lg-7 col-md-12 col-12 d-flex align-items-center">
+                    <div class="about-text">
+						<form>
+						<small class="small-text">Questions:</small>
+						<input type="text" id="base" style="width: 900px; height:100px">
+                    
+                        <div class="custom-btn-group mt-4">
+                          <button type="button" class="btn custom-btn custom-btn-bg custom-btn-link" onclick="callAPI(document.getElementById('base').value)">Get Answer</button>
+                        </div>
+						
+						</form>
+                    </div>
+                </div>
+
+               
+
+
+            </div>
+        </div>
+    </section>
+
+ <!-- Architecture --> 
+ <section class="project py-5" id="architecture">
+        <div class="container">
+                
+                <div class="row">
+                  <div class="col-lg-11 text-center mx-auto col-12">
+
+                      
+                      <div class="owl-carousel owl-theme" align="center">
+                        
+						<div class="item">
+                          <div class="project-info">
+							<h3>Funtional Architecture</h3>
+                            <img src="images/project/Functional.png" class="img-fluid" style="width: 600px; height:300px" alt="Funtional Architecture">
+                          </div>
+                        </div>
+						
+						
+						<div class="item">
+                          <div class="project-info">
+							<h3>Technical Architecture </h3>
+                            <img src="images/project/Architecture.png" class="img-fluid" style="width: 600px; height:300px;" alt="Technical Architecture">
+                          
+						  </div>
+                        </div>
+                        
+                      </div>
+
+                  </div>
+                </div>
+        </div>
+    </section>
+	
+      <!-- Questions --> 
+    <section class="resume py-5 d-lg-flex justify-content-center align-items-center" id="questions">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-6 col-12">
+                  <h2 class="mb-4">Sample Questions</h2>
+
+                    <div class="timeline">
+                        <div class="timeline-wrapper">
+                             
+                             <div class="timeline-info">
+                                  <h3><span>Science</small></h3>
+                                  <p>What is electron?<BR>
+									What is selfpollination in flower?<BR>
+									What are components of nerve?</p>
+                             </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-info">
+                                <h3><span>Home Science</small></h3>
+                                <p>What is funtions of home? <BR>
+								What cooking method of Idli?</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-wrapper">
+                            <div class="timeline-info">
+                                <h3><span>Computer</h3>
+                                <p>List input devices<BR>
+								How to do mail merge?</p>
+                            </div>
+                        </div>
+                        
+                        
+
+                    </div>
+                </div>
+
+                
+                  
+                
+            </div>
+        </div>
+    </section>
+
+   
+    <!-- FOOTER -->
+     <footer class="footer py-5" id="contact">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-lg-12 col-12">                                
+                         <p class="copyright-text text-center">Designed and built by <a rel="nofollow" href="https://www.linkedin.com/in/piyushshah77/" target="_blank">Piyush Shah</a></p>
+                         <p class="copyright-text text-center">Source Code at <a rel="nofollow" href="https://www.linkedin.com/in/piyushshah77/" target="_blank">Git Hub</a></p>
+                    
+					</div>
+                    
+               </div>
+          </div>
+     </footer>
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/custom.js"></script>
+
+  </body>
+</html>
