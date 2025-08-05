@@ -15,7 +15,8 @@ def lambda_handler(event, context):
     retrieveAndGenerateConfiguration={
         'type': 'KNOWLEDGE_BASE',
         'knowledgeBaseConfiguration': {
-            'knowledgeBaseId': 'O41RCIQ46A',
+            # update knowledgebase id
+            'knowledgeBaseId': 'knowledgeBaseId',
             'modelArn': 'arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-instant-v1'
                 }
             })
@@ -28,4 +29,5 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'body': response_kbase_final
     }
+
     
