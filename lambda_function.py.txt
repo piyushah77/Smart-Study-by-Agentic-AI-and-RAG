@@ -15,9 +15,9 @@ def lambda_handler(event, context):
     retrieveAndGenerateConfiguration={
         'type': 'KNOWLEDGE_BASE',
         'knowledgeBaseConfiguration': {
-            # update knowledgebase id
-            'knowledgeBaseId': 'knowledgeBaseId',
-            'modelArn': 'arn:aws:bedrock:us-west-2::foundation-model/anthropic.claude-instant-v1'
+            # update knowledgebase id and model Arn
+            'knowledgeBaseId': 'update your knowledge Base Id',
+            'modelArn': 'update your model Arn'
                 }
             })
             
@@ -31,3 +31,4 @@ def lambda_handler(event, context):
     }
 
     
+
